@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="theme-color" content="#00897B">
+   <title>First Progressive Web Apps</title>
+   <link rel="manifest" href="./manifest.json">
+   <link rel="stylesheet" href="./css/materialize.min.css">
+   <link rel="stylesheet" href="./css/custom.css">
+</head>
+
+<body>
+   <!-- Navigasi -->
+   <!-- <div class="navbar-fixed"> -->
+      <nav class="blue darken-1" role="navigation">
+         <div class="nav-wrapper container">
+            <a href="#" class="brand-logo" id="logo-container">Movie App</a>
+            <a href="#" class="sidenav-trigger" data-target="nav-mobile">☰</a>
+   
+            <ul class="topnav right hide-on-med-and-down"></ul>
+            <ul class="sidenav" id="nav-mobile"></ul>
+         </div>
+      </nav>
+   <!-- </div> -->
+   <!-- Akhir Navigasi -->
+
+   <div class="container" id="body-content"></div>
+
+   <script src="./js/materialize.min.js"></script>
+   <script src="./js/nav.js"></script>
+   <script src="./js/app.js"></script>
+   <script>
+      if ("serviceWorker" in navigator) {
+         window.addEventListener("load", function () {
+            navigator.serviceWorker
+               .register("./sw.js")
+               .then(function () {
+                  console.log("Pendaftaran ServiceWorker berhasil");
+               })
+               .catch(function () {
+                  console.log("Pendaftaran ServiceWorker gagal");
+               });
+         });
+      } else {
+         console.log("ServiceWorker belum didukung browser ini.");
+      }
+   </script>
+</body>
+
+</html>
