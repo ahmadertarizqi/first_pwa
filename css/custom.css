@@ -21,6 +21,11 @@
 .card.is-customized .card-content .card-title {
    font-size: 20px;
    font-weight: 400;
+   color: #000;
+}
+
+.card.is-customized:hover .card-content .card-title {
+   text-decoration: underline;
 }
 
 .card.is-customized .text-date {
@@ -30,6 +35,7 @@
 
 .card.is-customized .text-date .value {
    margin-left: 7px;
+   color: #000;
 }
 
 .card.is-customized .text-date .svg-icon {
@@ -49,7 +55,7 @@
 .loader-page svg {
    height: 5.5rem;
    width: 5.5rem;
-   fill: #F59A83;
+   fill: #1e88e5;
    transform-origin: 44% 50%;
    animation: rotate 1.5s infinite linear;
 }
