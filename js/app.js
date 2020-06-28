@@ -18,19 +18,22 @@ const Main = {
    },
    /* == Get Movie List == */
    Movies: async function() {
+      const movieList = document.querySelector('#movieList');
       this.renderLoader();
       try {
          const response = await fetch('./data/movies.json');
          const result = await response.json();
-         this.RenderMovieList(result);
+         this.RenderMovieList(result, movieList);
          this.clearLoader();
       } catch (error) {
+         alert('wow, MovieList error bro');
+         this.clearLoader();
+         this.handleError(movieList);
          console.log(error, 'get movies error');
       }
    },
-   RenderMovieList: function(movies) {
+   RenderMovieList: function(movies, parentEl) {
       // console.log(movies);
-      const nodeList = document.querySelector('#movieList');
       movies.forEach(movie => {
          const markup = `
             <div class="col s6 l3">
@@ -45,24 +48,27 @@ const Main = {
                </div>
             </div>
          `;
-         nodeList.insertAdjacentHTML('beforeend', markup);
+         parentEl.insertAdjacentHTML('beforeend', markup);
       });
    },
    
    /* == Get TV Show List == */
    TvShow: async function() {
+      const tvList = document.querySelector('#tvshowList');
       this.renderLoader();
       try {
          const response = await fetch('./data/tvshows.json');
          const result = await response.json();
-         this.RenderTvList(result);
+         this.RenderTvList(result, tvList);
          this.clearLoader();
       } catch (error) {
+         alert('wow, Tv Shows error bro');
+         this.clearLoader();
+         this.handleError(tvList);
          console.log(error, 'get tvshow error');
       }
    },
-   RenderTvList: function(tvshows) {
-      const nodeList = document.querySelector('#tvshowList');
+   RenderTvList: function(tvshows, parentEl) {
       tvshows.forEach(tv => {
          const markup = `
             <div class="col s6 l3">
@@ -77,7 +83,15 @@ const Main = {
                </div>
             </div>
          `;
-         nodeList.insertAdjacentHTML('beforeend', markup);
+         parentEl.insertAdjacentHTML('beforeend', markup);
       });
+   },
+   handleError: function(parentEl) {
+      const markup = `
+         <div class="col s12">
+            <h3>Ooops...ada sesuatu yg salah</h3>
+         </div>
+      `;
+      parentEl.insertAdjacentHTML('afterbegin', markup);
    }
 }
