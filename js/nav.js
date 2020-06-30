@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
    if(hasPage == '') {
       hasPage = 'home';
    }
+
    loadPage(hasPage);
 });
 
@@ -52,13 +53,13 @@ function loadPage(hasPage) {
             // load data
             switch (hasPage) {
                case 'home':
-                  getMovies();
+                  renderHome(hasPage);
                   break;
                case 'movies':
-                  getMovies();
+                  renderMovies();
                   break;
                case 'tvshows':
-                  getTvShow();
+                  renderTvShows();
                   break;
             }
 
