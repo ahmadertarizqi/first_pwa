@@ -52,10 +52,13 @@ function loadPage(hasPage) {
             // load data
             switch (hasPage) {
                case 'home':
-                  Main.Movies();
+                  getMovies();
+                  break;
+               case 'movies':
+                  getMovies();
                   break;
                case 'tvshows':
-                  Main.TvShow();
+                  getTvShow();
                   break;
             }
 
