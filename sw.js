@@ -14,6 +14,7 @@ const urlsToCache = [
    "/js/nav.js",
    "/js/app.js",
    "/img/icons.svg",
+   "/img/bg-banner.jpg",
    "/data/movies.json",
    "/data/tvshows.json",
 ];
