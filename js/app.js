@@ -18,48 +18,6 @@ const getTvShows = (onSuccess, onFailed) => {
       });
 }
 
-const renderHome = (currentPage) => {
-   const movieList = document.querySelector('#movieListHome');
-   const tvList = document.querySelector('#tvshowListHome')
-   
-   renderLoader();
-   
-   getMovies(result => {
-      movieListItem(result, movieList, currentPage);
-      clearLoader();
-   }, error => {
-      alert('wow, MovieList error bro');
-      clearLoader();
-      handleError(movieList);
-      console.log(error, 'get movies error');
-   });
-
-   getTvShows(result => {
-      tvListItem(result, tvList, currentPage);
-      clearLoader();
-   }, error => {
-      alert('wow, MovieList error bro');
-      clearLoader();
-      handleError(movieList);
-      console.log(error, 'get movies error');
-   });
-}
-
-const renderMovies = () => {
-   const movieList = document.querySelector('#movieList');
-   renderLoader();
-   
-   getMovies(result => {
-      movieListItem(result, movieList);
-      clearLoader();
-   }, error => {
-      alert('wow, MovieList error bro');
-      clearLoader();
-      handleError(movieList);
-      console.log(error, 'get movies error');
-   });
-}
-
 const movieListItem = (movies, parentEl, currentPage) => {
    if(!currentPage) {
       movies.forEach(movie => {
@@ -85,7 +43,7 @@ const movieListItem = (movies, parentEl, currentPage) => {
          parentEl.insertAdjacentHTML('beforeend', markup);
       });
    } else {
-      movies.slice(0, 4).forEach(movie => {
+      randomIndex(movies).slice(0, 4).forEach(movie => {
          const markup = `
             <div class="col s6 l3">
                <a class="card is-customized" href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">
@@ -108,21 +66,6 @@ const movieListItem = (movies, parentEl, currentPage) => {
          parentEl.insertAdjacentHTML('beforeend', markup);
       });
    }
-}
-
-const renderTvShows = () => {
-   const tvList = document.querySelector('#tvshowList');
-   renderLoader();
-
-   getTvShows(result => {
-      tvListItem(result, tvList);
-      clearLoader()
-   }, error => {
-      alert('wow, Tv Shows error bro');
-      clearLoader();
-      handleError(tvList);
-      console.log(error, 'get tvshow error');
-   });
 }
 
 const tvListItem = (tvshows, parentEl, currentPage) => {
@@ -150,7 +93,7 @@ const tvListItem = (tvshows, parentEl, currentPage) => {
          parentEl.insertAdjacentHTML('beforeend', markup);
       });
    } else {
-      tvshows.slice(0, 4).forEach(tv => {
+      randomIndex(tvshows).slice(0, 4).forEach(tv => {
          const markup = `
             <div class="col s6 l3">
                <a class="card is-customized" href="https://www.themoviedb.org/tv/${tv.id}" target="_blank">
@@ -201,4 +144,88 @@ const clearLoader = () => {
    if(loader) {
       loader.parentElement.removeChild(loader);
    }
+}
+
+const randomIndex = (items) => {
+   /** 
+    * Kode ini berasal dari stackoverflow, berikut sumbernya : 
+    * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+    * */ 
+
+   let currentIndex = items.length, 
+      temporaryValue, 
+      randomIndex;
+   
+   while(0 !== currentIndex) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      
+      // And swap it with the current element.
+      temporaryValue = items[currentIndex];
+      items[currentIndex] = items[randomIndex];
+      items[randomIndex] = temporaryValue;
+   }
+
+   return items;
+}
+
+/**
+ * RENDER HALAMAN
+ */
+const renderHome = (currentPage) => {
+   const movieList = document.querySelector('#movieListHome');
+   const tvList = document.querySelector('#tvshowListHome')
+   
+   renderLoader();
+   
+   getMovies(result => {
+      movieListItem(result, movieList, currentPage);
+      clearLoader();
+   }, error => {
+      alert('wow, MovieList error bro');
+      clearLoader();
+      handleError(movieList);
+      console.log(error, 'get movies error');
+   });
+
+   getTvShows(result => {
+      tvListItem(result, tvList, currentPage);
+      clearLoader();
+   }, error => {
+      alert('wow, MovieList error bro');
+      clearLoader();
+      handleError(movieList);
+      console.log(error, 'get movies error');
+   });
+}
+
+const renderMovies = () => {
+   const movieList = document.querySelector('#movieList');
+   renderLoader();
+   
+   getMovies(result => {
+      movieListItem(result, movieList);
+      clearLoader();
+   }, error => {
+      alert('wow, MovieList error bro');
+      clearLoader();
+      handleError(movieList);
+      console.log(error, 'get movies error');
+   });
+}
+
+const renderTvShows = () => {
+   const tvList = document.querySelector('#tvshowList');
+   renderLoader();
+
+   getTvShows(result => {
+      tvListItem(result, tvList);
+      clearLoader()
+   }, error => {
+      alert('wow, Tv Shows error bro');
+      clearLoader();
+      handleError(tvList);
+      console.log(error, 'get tvshow error');
+   });
 }

@@ -69,3 +69,35 @@
       transform: rotate(360deg);
    }
 }
+
+.main-banner {
+   padding: 90px 40px 90px 350px;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center 25%;
+   background-blend-mode: multiply;
+   background-color: #0000004d;
+}
+
+.main-banner .first-title {
+   font-size: 38px;
+   margin-top: 0;
+   color: #fff;
+}
+
+.main-banner .tagline-title {
+   font-size: 20px;
+   color: #fff;
+}
+
+@media screen and (max-width: 992px) {
+   .main-banner {
+      padding: 20px 40px 20px 40px;
+   }
+   .main-banner .first-title {
+      font-size: 21px;
+   }
+   .main-banner .tagline-title {
+      font-size: 16px;
+   }
+}
