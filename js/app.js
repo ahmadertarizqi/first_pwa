@@ -40,7 +40,7 @@ const Main = {
                <a class="card is-customized" href="https://www.themoviedb.org/movie/${movie.id}" target="_blank">
                   <div class="card-image">
                      <img src="./data/imgs/movies${movie.poster_path}"/>
-                     <span class="btn-floating halfway-fab blue darken-1 center-align" title="Popularity">${Math.round(movie.vote_average * 100) / 100}<small>%</small></span>
+                     <span class="btn-floating halfway-fab blue darken-1 center-align" title="Popularity">${Math.round((movie.vote_average * 100) / 10)}<small>%</small></span>
                   </div>
                   <div class="card-content">
                      <span class="card-title">${movie.title}</span>
@@ -81,7 +81,7 @@ const Main = {
                <a class="card is-customized" href="https://www.themoviedb.org/tv/${tv.id}" target="_blank">
                   <div class="card-image">
                      <img src="./data/imgs/tvshows${tv.poster_path}"/>
-                     <span class="btn-floating halfway-fab blue darken-1 center-align" title="Popularity">${Math.round(tv.vote_average * 100) / 100}<small>%</small></span>
+                     <span class="btn-floating halfway-fab blue darken-1 center-align" title="Popularity">${Math.round((tv.vote_average * 100) / 10)}<small>%</small></span>
                   </div>
                   <div class="card-content">
                      <span class="card-title">${tv.name}</span>
