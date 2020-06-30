@@ -1,3 +1,7 @@
+body {
+   background-color: #34495e;
+}
+
 .row-is-customized {
    display: flex;
    flex-wrap: wrap;
