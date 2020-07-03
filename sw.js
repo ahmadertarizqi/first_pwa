@@ -19,6 +19,9 @@ const urlsToCache = [
    "/data/tvshows.json",
 ];
 
+// akses url from service worker
+let accessURL = self.location.origin;
+
 self.addEventListener('install', function(ev) {
    ev.waitUntil(
       caches.open(CACHE_NAME)
