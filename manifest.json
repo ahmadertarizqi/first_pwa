@@ -2,6 +2,7 @@
   "name": "MovieWow - PWA",
   "short_name": "MovieWOW",
   "description": "Selamat datang di Moviewow!!, Jutaan Film, dan acara TV keren disini. Jelajahi sekarang!!!",
+  "start_url": "./index.html",
   "theme_color": "#1976d2",
   "background_color": "#1976d2",
   "display": "standalone",
@@ -42,7 +43,7 @@
       "type": "image/png"
     },
     {
-      "src": "images/icons/icon-512x512.png",
+      "src": "img/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
