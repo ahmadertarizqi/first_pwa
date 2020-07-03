@@ -104,4 +104,11 @@ body {
    .main-banner .tagline-title {
       font-size: 16px;
    }
+
+   .card.is-customized .card-content .card-title {
+      font-size: 14px;
+   }
+   .card.is-customized .text-date {
+      font-size: 14px;
+   }
 }
