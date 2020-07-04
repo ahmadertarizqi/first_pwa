@@ -155,10 +155,10 @@ const renderHome = (currentPage) => {
       tvListItem(result, tvList, currentPage);
       clearLoader();
    }, error => {
-      alert('wow, MovieList error bro');
+      alert('wow, Tvshows error bro');
       clearLoader();
       handleError(movieList);
-      console.log(error, 'get movies error');
+      console.log(error, 'get tvshows error');
    });
 }
 
