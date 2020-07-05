@@ -54,21 +54,22 @@ self.addEventListener('install', function(ev) {
    );
 });
 
-self.addEventListener('fetch', function(ev) {
-   // console.log(ev.request, 'hihik')
-   ev.respondWith(
-      caches.match(ev.request, { cacheName: CACHE_NAME })
-            .then(function(response) {
-               if(response) {
-                  console.log('ServiceWorker: Gunakan aset dari Cache', response.url);
-                  return response;
-               }
+self.addEventListener("fetch", function(event) {
+   event.respondWith(caches.open(CACHE_NAME)
+      .then(async (cache) => {
+         const cachedResponse = await cache.match(event.request);
+         if (cachedResponse) {
+            console.log('ServiceWorker: Gunakan aset dari Cache', cachedResponse.url);
+            return cachedResponse;
+         }
 
-               console.log('ServiceWorker: Memuat aset dari server', ev.request.url);
-               return fetch(ev.request);
-            })
-   );
-});
+         const networkResponse = await fetch(event.request);
+         event.waitUntil(
+            cache.put(event.request, networkResponse.clone())
+         );
+         return networkResponse;
+      }));
+ });
 
 self.addEventListener('activate', function(ev) {
    ev.waitUntil(
