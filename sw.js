@@ -13,6 +13,7 @@ const urlsToCache = [
    "/css/custom.css",
    "/js/materialize.min.js",
    "/js/dayjs.min.js",
+   "/js/sw_regist.js",
    "/js/nav.js",
    "/js/app.js",
    "/img/icons.svg",
