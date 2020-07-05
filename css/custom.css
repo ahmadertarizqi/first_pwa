@@ -51,6 +51,11 @@ body {
    fill: #000;
 }
 
+.card.is-customized .card-image img {
+   width: 100%;
+   height: 100%;
+}
+
 .loader-page {
    margin: 5rem auto;
    text-align: center;

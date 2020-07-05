@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
    loadNav();
 
    let hasPage = window.location.hash.substr(1);
-   if(hasPage == '') {
+   if(hasPage === '') {
       hasPage = 'home';
    }
 
